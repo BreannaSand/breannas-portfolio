@@ -1,0 +1,90 @@
+body {
+    font-family: -apple-system, Roboto, sans-serif, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #232129;
+}
+
+h1,
+h2,
+h3 {
+    color: #663399;
+}
+
+a {
+    color: #8954A8;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2rem;
+}
+
+/* Navigation styling */
+nav {
+    background-color: #663399;
+    /* purple background */
+    padding: 1rem 2rem;
+}
+
+nav ul {
+    list-style: none;
+    /* remove bullets */
+    display: flex;
+    /* horizontal menu */
+    gap: 2rem;
+    /* space between items */
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    font-weight: bold;
+}
+
+nav a {
+    color: #fff;
+    /* white text */
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #ffcc00;
+    /* highlight on hover */
+}
+
+nav a.active {
+    text-decoration: underline;
+    /* optional: highlight active page */
+}
+
+.portfolio-list {
+    list-style: none;
+    /* removes the bullets */
+    padding-left: 0;
+    /* remove default indentation */
+}
+
+
+.portfolio-list li {
+    background-color: #f0e6ff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.site-footer {
+    background-color: #663399;
+    /* same purple as nav */
+    color: #fff;
+    text-align: center;
+    padding: 24px 0;
+    margin-top: 48px;
+    font-size: 14px;
+}
