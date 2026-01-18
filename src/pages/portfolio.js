@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const PortfolioPage = ({ data }) => {
     const items = data.allContentfulPortfolioItem.nodes
@@ -11,14 +12,27 @@ const PortfolioPage = ({ data }) => {
                 <h1>Portfolio</h1>
 
                 <ul className="portfolio-list">
-                    {items.map(item => (
-                        <li key={item.slug}>
-                            <Link to={`/portfolio/${item.slug}`}>
-                                <h2>{item.title}</h2>
-                            </Link>
-                            {item.description && <p>{item.description.description}</p>}
-                        </li>
-                    ))}
+                    {items.map(item => {
+                        const image = item.image && getImage(item.image)
+
+                        return (
+                            <li key={item.slug}>
+                                <Link to={`/portfolio/${item.slug}`}>
+                                    {image && (
+                                        <GatsbyImage
+                                            image={image}
+                                            alt={item.image?.description || item.title}
+                                        />
+                                    )}
+                                    <h2>{item.title}</h2>
+                                </Link>
+
+                                {item.description && (
+                                    <p>{item.description.description}</p>
+                                )}
+                            </li>
+                        )
+                    })}
                 </ul>
             </main>
         </Layout>
@@ -32,7 +46,14 @@ export const query = graphql`
         slug
         title
         description {
-            description
+          description
+        }
+        image {
+          gatsbyImageData(
+            width: 400
+            placeholder: BLURRED
+          )
+          description
         }
       }
     }
