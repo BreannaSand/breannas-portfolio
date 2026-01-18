@@ -3,7 +3,7 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  // Create regular pages
+
   const pageResult = await graphql(`
     {
       allContentfulPage {
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // ✅ Create portfolio item pages
+
   const portfolioResult = await graphql(`
     {
       allContentfulPortfolioItem {
@@ -46,7 +46,7 @@ exports.createPages = async ({ graphql, actions }) => {
   portfolioResult.data.allContentfulPortfolioItem.nodes.forEach(node => {
     createPage({
       path: `/portfolio/${node.slug}`,
-      // Use a separate template for portfolio items to avoid errors
+
       component: path.resolve("./src/templates/portfolio-item.js"),
       context: { slug: node.slug },
     })

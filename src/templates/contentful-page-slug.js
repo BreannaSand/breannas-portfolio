@@ -14,7 +14,7 @@ const PageTemplate = ({ data }) => {
 
         <p>{page.body.body}</p>
 
-        {/* LinkedIn link — only shows if it exists (contact page) */}
+        {/* LinkedIn link  */}
         {page.linkedinUrl && (
           <p>
             <a
